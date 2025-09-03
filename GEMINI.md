@@ -6,7 +6,7 @@ This project provides a set of Bash scripts designed to diagnose and troubleshoo
 
 The main components are:
 
-*   **`diagnostico_camera.sh`**: The core script that performs the diagnostics.
+*   **`scripts/diagnostico_camera.sh`**: The core script that performs the diagnostics.
 *   **`config/config.env`**: A configuration file to customize the behavior of the scripts.
 *   **`scripts/`**: A directory intended to hold the diagnostic and future correction scripts.
 *   **`logs/`**: A directory to store the output of the diagnostic scripts.
@@ -19,11 +19,11 @@ The project does not require a build process. The scripts can be executed direct
 
 1.  Ensure the script has execution permissions:
     ```bash
-    chmod +x diagnostico_camera.sh
+    chmod +x scripts/diagnostico_camera.sh
     ```
 2.  Run the script:
     ```bash
-    ./diagnostico_camera.sh
+    ./scripts/diagnostico_camera.sh
     ```
     The output will be saved to a log file in the `logs/` directory.
 

@@ -2,7 +2,7 @@
 # Script para correção de problemas com câmeras USB
 
 # Carregar variáveis de configuração
-source config/config.env
+source ../config/config.env
 
 echo "=== Iniciando Correção Automática ==="
 

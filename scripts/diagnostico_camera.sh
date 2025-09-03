@@ -43,11 +43,11 @@ echo "" | tee -a "$LOG"
 echo "=== Diagnóstico concluído. Arquivo salvo em $LOG ===" | tee -a "$LOG"
 
 # Carregar variáveis de configuração
-source config/config.env
+source ../config/config.env
 
 if [ "$ENABLE_AUTO_FIX" = true ]; then
   echo "" | tee -a "$LOG"
   echo "=== Iniciando Correção Automática ===" | tee -a "$LOG"
-  ./scripts/fix_camera.sh | tee -a "$LOG"
+  ./fix_camera.sh | tee -a "$LOG"
   echo "=== Correção Automática Concluída ===" | tee -a "$LOG"
 fi

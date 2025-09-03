@@ -1,0 +1,41 @@
+=== Diagnóstico de Câmeras USB no Ubuntu ===
+Data: qua 03 set 2025 04:19:01 -03
+Máquina: my-linux-pc
+Kernel: 6.8.0-79-generic
+Distribuição:
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.5 LTS
+Release:	22.04
+Codename:	jammy
+
+=== Dispositivos USB conectados (lsusb) ===
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 007: ID 1bcf:28c0 Sunplus Innovation Technology Inc. Integrated_Webcam_HD
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+=== Dispositivos de vídeo (ls /dev/video*) ===
+crw-rw----+ 1 root video 81, 1 set  2 11:00 /dev/video0
+crw-rw----+ 1 root video 81, 2 set  2 11:00 /dev/video1
+
+=== Dispositivos detectados pelo v4l2-ctl ===
+Integrated_Webcam_HD: Integrate (usb-0000:00:14.0-5):
+	/dev/video0
+	/dev/video1
+	/dev/media0
+
+
+=== Últimas mensagens do kernel sobre USB (dmesg | grep usb) ===
+[    4.656693] usbcore: registered new interface driver usbhid
+[    4.656695] usbhid: USB HID core driver
+[  137.625056] usb 1-5: Found UVC 1.00 device Integrated_Webcam_HD (1bcf:28c0)
+[  137.643719] usbcore: registered new interface driver uvcvideo
+
+=== Logs recentes do PipeWire (journalctl) ===
+set 02 11:02:39 my-linux-pc systemd[2738]: Started PipeWire Multimedia Service.
+
+=== Grupos do usuário atual ===
+user adm cdrom sudo dip plugdev lpadmin sambashare
+
+=== Teste rápido: processos de vídeo em uso ===
+
+=== Diagnóstico concluído. Arquivo salvo em logs/diagnostico_camera_YYYYMMDD_HHMMSS.log ===

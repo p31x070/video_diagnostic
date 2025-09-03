@@ -1,8 +1,10 @@
 #!/bin/bash
 # Script de diagnóstico de câmeras USB no Ubuntu
-# Salva resultado em diagnostico_camera.log
+# Salva resultado em logs/diagnostico_camera.log
 
-LOG="diagnostico_camera_$(date +%Y%m%d_%H%M%S).log"
+mkdir -p ../logs
+
+LOG="../logs/diagnostico_camera_$(date +%Y%m%d_%H%M%S).log"
 
 echo "=== Diagnóstico de Câmeras USB no Ubuntu ===" | tee "$LOG"
 echo "Data: $(date)" | tee -a "$LOG"
@@ -25,7 +27,7 @@ command -v v4l2-ctl >/dev/null && v4l2-ctl --list-devices 2>&1 | tee -a "$LOG" |
 echo "" | tee -a "$LOG"
 
 echo "=== Últimas mensagens do kernel sobre USB (dmesg | grep usb) ===" | tee -a "$LOG"
-dmesg | grep -i usb | tail -n 50 | tee -a "$LOG"
+sudo dmesg | grep -i usb | tail -n 50 | tee -a "$LOG"
 echo "" | tee -a "$LOG"
 
 echo "=== Logs recentes do PipeWire (journalctl) ===" | tee -a "$LOG"
@@ -40,10 +42,11 @@ echo "=== Teste rápido: processos de vídeo em uso ===" | tee -a "$LOG"
 lsof /dev/video* 2>/dev/null | tee -a "$LOG"
 echo "" | tee -a "$LOG"
 
-echo "=== Diagnóstico concluído. Arquivo salvo em $LOG ===" | tee -a "$LOG"
+echo "=== Diagnóstico concluído. Arquivo salvo em $LOG ==="
 
 # Carregar variáveis de configuração
-source ../config/config.env
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source "$SCRIPT_DIR/../config/config.env"
 
 if [ "$ENABLE_AUTO_FIX" = true ]; then
   echo "" | tee -a "$LOG"

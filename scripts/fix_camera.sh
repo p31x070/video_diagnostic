@@ -2,7 +2,8 @@
 # Script para correção de problemas com câmeras USB
 
 # Carregar variáveis de configuração
-source ../config/config.env
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source "$SCRIPT_DIR/../config/config.env"
 
 echo "=== Iniciando Correção Automática ==="
 

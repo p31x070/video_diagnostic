@@ -1,0 +1,6 @@
+# Ignore log files and zip archives in the logs directory
+logs/*.log
+logs/*.zip
+
+# Do not ignore the example log file
+!logs/log.example
